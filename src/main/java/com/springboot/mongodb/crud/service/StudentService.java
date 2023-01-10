@@ -7,4 +7,8 @@ public interface StudentService {
     StudentResponse getAllStudents();
 
     StudentResponse addStudent(Student student);
+
+    StudentResponse removeStudent(Student student);
+
+    StudentResponse updateStudent(Student student);
 }

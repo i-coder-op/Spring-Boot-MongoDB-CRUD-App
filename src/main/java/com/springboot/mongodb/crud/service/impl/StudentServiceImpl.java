@@ -36,4 +36,29 @@ public class StudentServiceImpl implements StudentService {
         }
         return null;
     }
+
+    @Override
+    public StudentResponse removeStudent(Student student) {
+        studentRepository.delete(student);
+        List<Student> students = studentRepository.findAll();
+        if(null != students && !students.isEmpty()){
+            StudentResponse studentResponse = new StudentResponse();
+            studentResponse.setStudents(students);
+            return studentResponse;
+        }
+        return null;
+    }
+
+    @Override
+    public StudentResponse updateStudent(Student student) {
+        if(null != student){
+            Student savedStudent = studentRepository.save(student);
+            if(null != savedStudent){
+                StudentResponse studentResponse = new StudentResponse();
+                studentResponse.setStudents(List.of(student));
+                return studentResponse;
+            }
+        }
+        return null;
+    }
 }
