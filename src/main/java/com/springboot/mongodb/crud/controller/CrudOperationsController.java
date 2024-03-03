@@ -21,6 +21,7 @@ public class CrudOperationsController {
      * Read all the data from the student collection from mongoDB
      * @return
      */
+    @CrossOrigin
     @GetMapping(value = "/students", produces = "application/json")
     public ResponseEntity<StudentResponse> getAllStudents(){
         StudentResponse  studentResponse = studentService.getAllStudents();
